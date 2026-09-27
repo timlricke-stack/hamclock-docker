@@ -5,7 +5,7 @@ Expose a HamClock container on `ab0h.com` through Cloudflare when HamClock and i
 ## Cloudflare tunnel config
 
 1. Create a tunnel in Cloudflare Zero Trust and download credentials JSON.
-2. Copy `/home/runner/work/hamclock-docker/hamclock-docker/cloudflared/config.yml.example` to `config.yml`.
+2. Copy `cloudflared/config.yml.example` to `config.yml`.
 3. Update:
    - `TUNNEL_ID`
    - `credentials-file` path
@@ -24,7 +24,8 @@ If your HamClock container is named `hamclock`, run cloudflared against that con
 docker run -d --name cloudflared \
   --network container:hamclock \
   -v /etc/cloudflared:/etc/cloudflared:ro \
-  cloudflare/cloudflared:latest tunnel --config /etc/cloudflared/config.yml run
+  cloudflare/cloudflared@sha256:072c067d25ccbe61d46e18f0d0723255f2bb5304f7317caa95b27031520ff92c \
+  tunnel --config /etc/cloudflared/config.yml run
 ```
 
 With the included config, `https://ab0h.com` is proxied by Cloudflare to `http://127.0.0.1:8080` inside the HamClock container.
