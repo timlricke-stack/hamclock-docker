@@ -24,7 +24,7 @@ If your HamClock container is named `hamclock`, run cloudflared against that con
 docker run -d --name cloudflared \
   --network container:hamclock \
   -v /etc/cloudflared:/etc/cloudflared:ro \
-  cloudflare/cloudflared@sha256:072c067d25ccbe61d46e18f0d0723255f2bb5304f7317caa95b27031520ff92c \
+  cloudflare/cloudflared:1961-96d39adbc812@sha256:072c067d25ccbe61d46e18f0d0723255f2bb5304f7317caa95b27031520ff92c \
   tunnel --config /etc/cloudflared/config.yml run
 ```
 
